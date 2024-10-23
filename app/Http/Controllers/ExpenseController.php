@@ -33,7 +33,7 @@ class ExpenseController extends Controller
     public function OneDayExpenses($date)
     {
         $get = DB::table('expenses')
-            ->join('types', 'expenses.id_type', '=', 'types.id_type')
+            ->join('types', 'expenses.id_type', '=', 'types.id')
             ->where('date_event', '=', $date)
             ->select('expenses.*', 'types.*',)
             ->get();
@@ -48,7 +48,7 @@ class ExpenseController extends Controller
         $first_date = $request->fdate;
 
         $get = DB::table('expenses')
-        ->join('types', 'expenses.id_type', '=', 'types.id_type')
+        ->join('types', 'expenses.id_type', '=', 'types.id')
         ->where('date_event', '<=', $last_date)
         ->where('date_event', '>=', $first_date)
         ->select('expenses.*', 'types.*')
@@ -73,7 +73,7 @@ class ExpenseController extends Controller
         $day = $request->date;
 
         $get = DB::table('expenses')
-        ->join('types', 'expenses.id_type', '=', 'types.id_type')
+        ->join('types', 'expenses.id_type', '=', 'types.id')
         ->where('date_event', '=', $day)
         ->select('expenses.*', 'types.*')
         ->get();
@@ -113,7 +113,7 @@ class ExpenseController extends Controller
     public function AllExpenses()
     {
         $query = DB::table('expenses')
-        ->join('types', 'expenses.id_type', '=', 'types.id_type')
+        ->join('types', 'expenses.id_type', '=', 'types.id')
         ->select('expenses.*', 'types.*')
         ->get();
 
@@ -134,7 +134,7 @@ class ExpenseController extends Controller
     {
         //dd($id);
         $query = DB::table('expenses')
-            ->join('types', 'expenses.id_type', '=', 'types.id_type')
+            ->join('types', 'expenses.id_type', '=', 'types.id')
             ->where('id', '=', $id)
             ->select('expenses.*', 'types.*')
             ->get();

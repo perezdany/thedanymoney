@@ -98,5 +98,15 @@ Route::middleware(['auth:web'])->group(function(){
 
     //Yearly
     Route::get('yearly_chart', [Calculator::class, 'YearlyChart']);
+
+    //PROFILE UTILISATEUR
+    Route::post('go_profil', [UserController::class, 'GoProfile']);
+
+    //MODIFIER LES INFOS DU USER
+    Route::post('edit_user', [UserController::class, 'EditUser']);
+
+    //MODIFIER LE MOTS DE PASSE
+    Route::post('edit_user_password', [UserController::class, 'EditPass']);
+
     
 });

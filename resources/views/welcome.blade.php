@@ -4,6 +4,8 @@
 	use App\Http\Controllers\Calculator;
 	/*use App\Models\Type;
 	use App\Models\Expense;*/
+
+
 @endphp
 
 @extends('layouts/app_base')
@@ -11,7 +13,12 @@
 @section('content')
    
 	<section class="content">
-	
+		<div class="box-header with-border">
+			
+			@if(session('success') != null)
+			<p class="bg-success">Done!</p>
+			@endif
+        </div>
 	   <div class="row">
         <div class="col-lg-4 col-xs-4">
           <!-- small box -->
@@ -104,7 +111,7 @@
 					@endphp
 					<select class="form-control" name="type">
 						@foreach($get as $all)
-							<option value="{{$all->id_type}}">{{$all->name_type}}</option>
+							<option value="{{$all->id}}">{{$all->name_type}}</option>
 						@endforeach
 						
 					</select>

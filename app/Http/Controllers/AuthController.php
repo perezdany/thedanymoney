@@ -16,9 +16,7 @@ class AuthController extends Controller
 
     public function AdminLogin(Request $request)
     {
-       
-       //dd(Auth::guard('admin')->attempt(['login' => $request->login, 'password' => $request->password]));
-            //dd(Auth::guard('admin')->attempt(['login' => $request->login, 'passe' => $request->passe, ]));
+        
            
             //dd($departement);
             if (Auth::guard('web')->attempt(['login' => $request->login, 'password' => $request->password, ])) 
@@ -26,10 +24,11 @@ class AuthController extends Controller
                 
                 // Authentication was successful...
                 //dd(Auth::guard('admin')->attempt(['pseudo' => $request->login, 'password' => $request->pass, ]));
-
+                
                 $request->session()->regenerate();//regeneger la session
-    
-                return redirect()->route('home'); //si l'utilisateur était sur une ancienne page après la connexion ca le renvoi la bas dans le cas contraire sur la page d'accueil welcome
+
+                //dd(auth()->user()->nom);
+                return redirect()->intended(route('home'));
                
     
             }

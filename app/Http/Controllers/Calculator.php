@@ -27,7 +27,7 @@ class Calculator extends Controller
             $date_depart = $year."-".$month."-".($day-$number_day);
 
             $get = DB::table('expenses')
-            ->join('types', 'expenses.id_type', '=', 'types.id_type')
+            ->join('types', 'expenses.id_type', '=', 'types.id')
             ->where('date_event', '<=', $today)
             ->where('date_event', '>=', $date_depart)
             ->select('expenses.*',)
@@ -58,7 +58,7 @@ class Calculator extends Controller
 
         //dd($date_fin);
         $get = DB::table('expenses')
-        ->join('types', 'expenses.id_type', '=', 'types.id_type')
+        ->join('types', 'expenses.id_type', '=', 'types.id')
         ->where('date_event', '>=', $date_depart)
         ->where('date_event', '<=', $date_fin)
         ->select('expenses.*',)
@@ -80,7 +80,7 @@ class Calculator extends Controller
         $somme = 0;
 
         $get = DB::table('expenses')
-            ->join('types', 'expenses.id_type', '=', 'types.id_type')
+            ->join('types', 'expenses.id_type', '=', 'types.id')
             ->where('date_event', '=', $today)
             ->select('expenses.*',)
             ->get();
@@ -119,7 +119,7 @@ class Calculator extends Controller
 
             //LA REQUETE MAINTENANT
             $get = DB::table('expenses')
-                ->join('types', 'expenses.id_type', '=', 'types.id_type')
+                ->join('types', 'expenses.id_type', '=', 'types.id')
                 ->where('date_event', '=', $the_date)
                 ->select('expenses.*',)
                 ->get();

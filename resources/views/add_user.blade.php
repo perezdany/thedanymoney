@@ -31,6 +31,10 @@
               @csrf
               <div class="box-body">
                 
+                 <div class="form-group">
+                              <label >Nom:</label>
+                              <input type="text" class="form-control" name="nom" onkeyup="this.value=this.value.toUpperCase();">
+                </div>
 
                 <div class="form-group">
                               <label >Pseudo:</label>
