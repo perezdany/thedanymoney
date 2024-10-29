@@ -34,8 +34,8 @@ class ExpenseController extends Controller
     {
         $get = DB::table('expenses')
             ->join('types', 'expenses.id_type', '=', 'types.id')
-            ->where('date_event', '=', $date)
-            ->select('expenses.*', 'types.*',)
+            ->where('expenses.date_event', '=', $date)
+            ->select('expenses.*', 'types.name_type',)
             ->get();
 
         return $get;
@@ -75,7 +75,7 @@ class ExpenseController extends Controller
         $get = DB::table('expenses')
         ->join('types', 'expenses.id_type', '=', 'types.id')
         ->where('date_event', '=', $day)
-        ->select('expenses.*', 'types.*')
+        ->select('expenses.*', 'types.name_type')
         ->get();
 
         foreach($get as $all)
@@ -114,7 +114,7 @@ class ExpenseController extends Controller
     {
         $query = DB::table('expenses')
         ->join('types', 'expenses.id_type', '=', 'types.id')
-        ->select('expenses.*', 'types.*')
+        ->select('expenses.*', 'types.name_type')
         ->get();
 
         return $query;
@@ -135,8 +135,8 @@ class ExpenseController extends Controller
         //dd($id);
         $query = DB::table('expenses')
             ->join('types', 'expenses.id_type', '=', 'types.id')
-            ->where('id', '=', $id)
-            ->select('expenses.*', 'types.*')
+            ->where('expenses.id', '=', $id)
+            ->select('expenses.*', 'types.name_type')
             ->get();
         
         return $query;
@@ -149,6 +149,16 @@ class ExpenseController extends Controller
               ->update(['label' => $request->subject, 'date_event' => $request->date, 'price' => $request->amount, 'id_type' => $request->type]);
 
     
-        return view('edit_expense', ['id' => $request->id, 'success' => 'ok']);
+        return view('edit_expense', ['id' => $request->id, 'success' => 'Done']);
+    }
+
+    public function DeleteExpense(Request $request)
+    {
+        $affected = DB::table('expenses')
+              ->where('id', $request->id)
+              ->delete();
+
+    
+        return redirect('welcome')->with('success', 'Deleted!');
     }
 }   

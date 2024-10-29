@@ -89,7 +89,7 @@
                     <div class="col-md-12">
                     <p class="text-center">
                         <strong><strong>Monthly Expenses Chart Of 
-                        @php echo date('Y'); @endphp</strong></strong>
+                        @php echo $year; @endphp</strong></strong>
                     </p>
 
                     <!--my chart-->

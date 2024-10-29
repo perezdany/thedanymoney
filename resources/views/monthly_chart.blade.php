@@ -186,7 +186,7 @@
                                 datasets: [{
                                     label: 'Expenses',
                                     data: @json($data),
-                                    backgroundColor: ["#e8daef", " #a9dfbf", " #85929e", "blue", "#229954", " #f1948a ", "#2c3e50", "#fad7a0", "#2874a6", "#f1c40f", "#ebf5fb", "#1c2833", "#e8daef", " #a9dfbf", " #85929e", "blue", "#229954", " #f1948a ", "#2c3e50", "#fad7a0", "#2874a6", "#f1c40f", "#ebf5fb", "#1c2833", "#e8daef", " #a9dfbf", " #85929e",],
+                                    backgroundColor: ["#e8daef", " #a9dfbf", " #85929e", "blue", "#229954", " #f1948a ", "#2c3e50", "#fad7a0", "#2874a6", "#f1c40f", "#038dfc", "#1c2833", "#e8daef", " #a9dfbf", " #85929e", "blue", "#229954", " #f1948a ", "#2c3e50", "#fad7a0", "#2874a6", "#f1c40f", "#038dfc", "#1c2833", "#e8daef", " #a9dfbf", " #85929e",],
                                 }]
                             },
                             options: {
@@ -207,65 +207,47 @@
       </div>
       <!-- /.row (main row) -->
 	  
-		<div class="row">
-        	<div class="col-xs-12">
-				  <div class="box">
-					<div class="box-header">
-					  <h3 class="box-title">Today Expenses</h3>
-					</div>
-					<!-- /.box-header -->
-					@php
-						$today = date("Y-m-d");
-						$get = (new ExpenseController())->OneDayExpenses($today);
-					@endphp
-					<div class="box-body">
-						<table id="example1" class="table table-bordered table-striped">
-							<thead>
-								<tr>
-								<th>Object</th>
-								<th>Type</th>
-								<th>Amount</th>
-								<th>Action</th>
-								
-								</tr>
-							</thead>
-							<tbody>
-								@foreach($get as $all)
-									<tr>
-										<td>{{$all->label}}</td>
-										<td>{{$all->name_type}}</td>
-										<td>{{$all->price}}</td>
-										<td>
-											<form action="edit_expense_form" method="post">
-													@csrf
-													<input type="text" value="{{$all->id}}" style="display:none" name="id">
-													<button class="btn btn-primary">Edit</button>
-											</form>
-											<button class="btn btn-danger">Delete</button>
-											
-										</td>
-										
-									</tr>
-								@endforeach
-								
-								
-							</tbody>
-							<tfoot>
-								<tr>
-								<th>Object</th>
-								<th>Type</th>
-								<th>Amount</th>
-								<th>Action</th>
-								</tr>
-							</tfoot>
-						</table>
-					</div>
-					<!-- /.box-body -->
-				  </div>
-          		<!-- /.box -->
-        	</div>
-        	<!-- /.col -->
+		 <div class="row">
+        <!-- Left col -->
+        <section class="col-lg-6 connectedSortable">
+          <!-- Custom tabs (Charts with tabs)-->
+          <!-- general form elements -->
+            <div class="box box-primary">
+              <div class="box-header with-border">
+                <h3 class="box-title">Search a Monnth</h3>
+                @if(session('success') != null)
+                  <p class="bg-success">Done!</p>
+                @endif
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+              <form role="form" action="search_month_graph" method="post">
+                @csrf
+                <div class="box-body">
+                  
+
+                  <div class="form-group">
+                  <label >Month:</label>
+                  <input type="month" class="form-control" name="month">
+                  </div>
+
+                  
+                
+                </div>
+                <!-- /.box-body -->
+
+                <div class="box-footer">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </form>
+            </div>
+            <!-- /.box -->
+        </section>
+        <!-- /.Left col -->
+       
+      </div>
+        
       	</div>	  
-    </section>
+  </section>
 @endsection
 

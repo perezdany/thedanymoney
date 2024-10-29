@@ -91,10 +91,20 @@ Route::middleware(['auth:web'])->group(function(){
     //MODIF
     Route::post('edit_expense', [ExpenseController::class, 'EditExpense']);
 
+    //SUPPRIMER UNE DEPENSE
+    Route::post('delete_expense', [ExpenseController::class, 'DeleteExpense']);
+
+
     //AFFICHER LES GRAPHES
 
     //Monthly
     Route::get('monthly_chart', [Calculator::class, 'MonthlyChart']);
+
+    //RECHERCHER
+    Route::post('search_month_graph', [Calculator::class, 'SearchMonthChart']);
+
+    //RECHERCHER YEAR
+    Route::post('search_year_graph', [Calculator::class, 'SearchYearlyChart']);
 
     //Yearly
     Route::get('yearly_chart', [Calculator::class, 'YearlyChart']);

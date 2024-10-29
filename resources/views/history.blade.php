@@ -29,7 +29,9 @@
 							</thead>
 							<tbody>
                                 @php     
-                                    $get = (new ExpenseController())->AllExpenses();      
+                                    $get = (new ExpenseController())->AllExpenses();    
+
+									//dd($get);
                                 @endphp
                                 
                                     @foreach($get as $all)
@@ -44,7 +46,11 @@
 													<input type="text" value="{{$all->id}}" style="display:none" name="id">
 													<button class="btn btn-primary">Edit</button>
 												</form>
-                                                <button class="btn btn-danger">Delete</button>
+                                               <form action="delete_expense" method="post">
+												@csrf
+													<input type="text" style="display:none;" name="id" value="{{$all->id}}">
+													<button type="submit" class="btn btn-danger">Delete</button>
+												</form>
                                                 
                                             </td>
                                             

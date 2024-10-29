@@ -28,7 +28,7 @@
             <!-- /.box-header -->
             <!-- form start -->
             @php
-               
+                //dd($id);
                 $get = (new ExpenseController())->GetOneExpense($id);
             @endphp
             @foreach($get as $get)
