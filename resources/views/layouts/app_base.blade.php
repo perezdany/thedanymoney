@@ -156,7 +156,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="https://wiflix.voto"><i class="fa fa-circle-o"></i> Wiflix</a></li>
+            <li><a href="https://flemmix.org/"><i class="fa fa-circle-o"></i> Wiflix</a></li>
             <li><a href="https://www.novaflix.uno/"><i class="fa fa-circle-o"></i> Novaflix</a></li>
             <li><a href="https://anime-sama.fr/"><i class="fa fa-circle-o"></i> Anime Sama</a></li>
             <li><a href="https://vostfree.ws/"><i class="fa fa-circle-o"></i> Vostfree</a></li>

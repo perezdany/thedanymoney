@@ -40,7 +40,7 @@
                         <div class="form-group">
                             <label >Type of expenses </label>
                             
-                            <select class="form-control" name="type">
+                            <select class="form-control" name="typeex">
                                 <option value="{{$get->id_type}}">{{$get->name_type}}</option>
                                 @php
                                     $query = (new TypeController())->AllTypes();

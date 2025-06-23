@@ -130,6 +130,38 @@ class ExpenseController extends Controller
         );
     }
 
+    public function GoWeeklyEditForm(Request $request)
+    {
+        return view('weekly_edit_form',
+            [
+                'id' => $request->id,
+            ]
+        );
+    }
+
+    public function GetById($id)
+    {
+        $get = Weekly::where('id_weekly', $id)->get();
+
+        return $get;
+    }
+
+    public function EditWeekly(Request $request)
+    {
+        //dd($request->all());
+        $amount = $request->amount;
+        $period = $request->period;
+
+        $Insert = DB::table('weeklies')->where('id_weekly', $request->id)
+        ->update([
+            'tot_weekly' => $amount,
+            'period' => $period,
+        ]);
+
+        //dd($Insert);
+        return view('weeklies')->with('success', 'Done!');
+    }
+
     public function GetOneExpense($id)
     {
         //dd($id);
@@ -146,7 +178,7 @@ class ExpenseController extends Controller
     {
         $affected = DB::table('expenses')
               ->where('id', $request->id)
-              ->update(['label' => $request->subject, 'date_event' => $request->date, 'price' => $request->amount, 'id_type' => $request->type]);
+              ->update(['label' => $request->subject, 'date_event' => $request->date, 'price' => $request->amount, 'id_type' => $request->typeex]);
 
     
         return view('edit_expense', ['id' => $request->id, 'success' => 'Done']);

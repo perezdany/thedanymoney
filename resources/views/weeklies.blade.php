@@ -21,7 +21,7 @@
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
-                <form role="form" acton="weekly_info" method="post">
+                <form role="form" action="weekly_info" method="post">
 					@csrf
 					<div class="box-body">
 						<div class="form-group">
@@ -80,8 +80,16 @@
                                     <td>{{$all->period}}</td>
                                  
                                     <td>
-                                        <button class="btn btn-primary">Edit</button>
-                                        <button class="btn btn-danger">Delete</button>
+                                    	<form action="edit_weekly_form" method="post">
+											@csrf
+											<input type="text" value="{{$all->id_weekly}}" style="display:none" name="id">
+											<button class="btn btn-primary">Edit</button>
+										</form>
+                                       	<form action="delete_weekly" method="post">
+										@csrf
+											<input type="text" style="display:none;" name="id" value="{{$all->id_weekly}}">
+											<button type="submit" class="btn btn-danger">Delete</button>
+										</form>
                                         
                                     </td>
                                     

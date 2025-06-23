@@ -76,9 +76,16 @@
                                             <td>{{$all->name_type}}</td>
                                             <td>{{$all->price}}</td>
                                             <td>
-                                                <button class="btn btn-primary">Edit</button>
-                                                <button class="btn btn-danger">Delete</button>
-                                                
+                                                <form action="edit_expense_form" method="post">
+												@csrf
+												<input type="text" style="display:none;" name="id" value="{{$all->id}}">
+												<button type="submit" class="btn btn-primary">Edit</button>
+												</form>
+												<form action="delete_expense" method="post">
+													@csrf
+													<input type="text" style="display:none;" name="id" value="{{$all->id}}">
+													<button type="submit" class="btn btn-danger">Delete</button>
+												</form>
                                             </td>
                                             
                                         </tr>

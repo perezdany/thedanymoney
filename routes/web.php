@@ -118,5 +118,11 @@ Route::middleware(['auth:web'])->group(function(){
     //MODIFIER LE MOTS DE PASSE
     Route::post('edit_user_password', [UserController::class, 'EditPass']);
 
+    //MODIFIER LES INFOS DE SEMAINES
+    Route::post('edit_weekly_form', [ExpenseController::class, 'GoWeeklyEditForm']);
+
+    //MODIFIER 
+    Route::post('edit_weekly', [ExpenseController::class, 'EditWeekly']);
+
     
 });
